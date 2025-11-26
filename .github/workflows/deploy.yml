@@ -36,11 +36,17 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Ensure .nojekyll file exists
+        run: |
+          if [ -f public/.nojekyll ]; then
+            cp public/.nojekyll dist/.nojekyll
+          else
+            touch dist/.nojekyll
+          fi
+          ls -la dist/.nojekyll
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
-      - name: Add .nojekyll file
-        run: touch dist/.nojekyll
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

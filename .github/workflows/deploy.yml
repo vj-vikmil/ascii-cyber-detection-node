@@ -36,14 +36,19 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Ensure .nojekyll file exists
+      - name: Ensure .nojekyll and disable Jekyll
         run: |
-          if [ -f public/.nojekyll ]; then
-            cp public/.nojekyll dist/.nojekyll
-          else
-            touch dist/.nojekyll
+          # Create .nojekyll file
+          touch dist/.nojekyll
+          # Copy _config.yml if it exists
+          if [ -f public/_config.yml ]; then
+            cp public/_config.yml dist/_config.yml
           fi
-          ls -la dist/.nojekyll
+          # Verify files
+          echo "Files in dist root:"
+          ls -la dist/ | head -20
+          echo "Checking for .nojekyll:"
+          test -f dist/.nojekyll && echo ".nojekyll exists" || echo ".nojekyll MISSING"
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -2,10 +2,10 @@
 export const initOnlineTracker = (onCountUpdate: (count: number) => void) => {
   // Dynamically import Firebase modules
   Promise.all([
-    // @ts-ignore - Dynamic URL import not supported by TypeScript
-    import("https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"),
-    // @ts-ignore - Dynamic URL import not supported by TypeScript
-    import("https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js")
+    // @ts-expect-error - Dynamic URL import not supported by TypeScript
+    import("https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js") as Promise<any>,
+    // @ts-expect-error - Dynamic URL import not supported by TypeScript
+    import("https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js") as Promise<any>
   ]).then(([firebaseApp, firebaseDb]) => {
     const { initializeApp } = firebaseApp;
     const { getDatabase, ref, set, onValue, onDisconnect, remove } = firebaseDb;

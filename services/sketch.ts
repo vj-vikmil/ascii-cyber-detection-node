@@ -72,7 +72,7 @@ export const createSketch = (
   };
 
   const updateStyle = () => {
-    const name = params.ascii.style;
+    const name: string = params.ascii.style;
     let s = "";
     if (name === "classic") s = "Ñ@#W$9876543210?!abc;:+=-,._          ";
     else if (name === "dense") s = "$@B%8&WM#*oahkbdpqwmZ0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
@@ -211,7 +211,7 @@ export const createSketch = (
 
   // Luma detection now happens in VIDEO coordinates
   const getLumaBoxes = (vw: number, vh: number, p: any): any[] => {
-    const out: any[] = [];
+    const out: Array<Record<string, any>> = [];
     if (!vidReady) return out;
     const thr = params.detection.luma.threshold;
     const gridVal = params.detection.luma.grid;
@@ -283,7 +283,7 @@ export const createSketch = (
   };
 
   const getPoseBoxes = (vw: number, vh: number, conf: number) => {
-     const out = [];
+     const out: Array<Record<string, any>> = [];
      for(const pr of poses){
        const kps = pr?.pose?.keypoints||[];
        let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;

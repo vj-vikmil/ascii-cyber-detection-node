@@ -44,6 +44,8 @@ jobs:
           mkdir -p target-repo/vj-vikmil/ascii-detect
           rm -rf target-repo/vj-vikmil/ascii-detect/*
           cp -r dist/* target-repo/vj-vikmil/ascii-detect/
+          # Ensure .nojekyll is included
+          touch target-repo/vj-vikmil/ascii-detect/.nojekyll || true
       
       - name: Commit and push
         run: |

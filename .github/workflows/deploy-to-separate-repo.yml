@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: vj-vikmil/vj-vikmil
-          ref: gh-pages
+          ref: main
           path: target-repo
           token: ${{ secrets.DEPLOY_TOKEN }}
       

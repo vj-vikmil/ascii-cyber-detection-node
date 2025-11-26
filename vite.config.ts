@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/ascii-cyber-detection-node/' : '/',
+  base: '/ascii-cyber-detection-node/',
   plugins: [react()],
   server: {
     host: true

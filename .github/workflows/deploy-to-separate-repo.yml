@@ -37,7 +37,7 @@ jobs:
           repository: vj-vikmil/vj-vikmil
           ref: gh-pages
           path: target-repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
       
       - name: Copy files to target
         run: |
@@ -50,6 +50,7 @@ jobs:
           cd target-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/vj-vikmil/vj-vikmil.git
           git add vj-vikmil/ascii-detect
           if git diff --staged --quiet; then
             echo "No changes to commit"
